@@ -10,3 +10,7 @@ const axiosBase = axios.create({
 export const getServer = async(url) =>{
     return await axiosBase.get(url)
 };
+
+export const postFileServer = async(url,data) =>{
+    return await axiosBase.post(url,data)
+}
