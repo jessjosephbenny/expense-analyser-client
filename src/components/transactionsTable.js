@@ -53,9 +53,9 @@ class Transactions extends React.Component {
                             Closing Balance
                 </Table.TextHeaderCell>
                     </Table.Head>
-                    <Table.Body height={580}>
+                    <Table.Body height={380}>
                         {transactionDataView.map(transaction => (
-                            <Table.Row>
+                            <Table.Row intent={transaction.withdrawalAmount>0?'danger':'success'}>
                                 <Table.TextCell>
                                     {transaction.tDate}
                                 </Table.TextCell>

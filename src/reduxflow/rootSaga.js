@@ -1,10 +1,12 @@
 import {all} from 'redux-saga/effects';
 import {
-    watchGetExpenseData
+    watchGetExpenseData,
+    watchUploadStatement
  } from './sagas/expenseSaga';
 
  export default function* rootSaga(){
      yield all([
-         watchGetExpenseData()
+         watchGetExpenseData(),
+         watchUploadStatement()
      ])
  }
