@@ -11,6 +11,9 @@ let initialState = {
         balance:0,
         totalDeposit:0,
         totalWithdrawal:0
+    },
+    classification:{
+
     }
 }
 
@@ -22,6 +25,7 @@ export default function expenseState(state=initialState,action){
                 ...state,
                 transactionData:data['transactionData'],
                 summary:data['summary'],
+                classification:data['Classification'],
                 firstLoad:false,
                 loading:false
             }

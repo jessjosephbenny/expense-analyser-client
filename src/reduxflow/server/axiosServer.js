@@ -1,7 +1,7 @@
 import axios from "axios";
-const productionURL = "/LayoutCompare/server"; 
+const productionURL = "/server/"; 
 const devURL =  "http://localhost:8080/"; 
-const baseURL = process.env.NODE_ENV ? process.env.NODE_ENV === "development" ? devURL:devURL:productionURL; 
+const baseURL = process.env.NODE_ENV ? process.env.NODE_ENV === "development" ? devURL:productionURL:productionURL; 
 const axiosBase = axios.create({ 
     baseURL, 
     responseType: "json",

@@ -11,7 +11,7 @@ function App(props) {
   const {firstLoad,loading} = props;
   console.log('firstLoad',firstLoad);
   return (
-    <div>
+    <div style={{height:'100%'}}>
         <Header/>
         {firstLoad?<UploadScreen />:<Dashboard/>}
         {loading?<div style={{position:'absolute',left:0,top:0,height:'100vh',width:'100vw'}}>

@@ -14,6 +14,7 @@ import { getServer, postFileServer } from '../server/axiosServer';
 export function* watchGetExpenseData() {
     try {
         yield takeLatest(WATCH_GET_EXPENSE_DATA, function* () {
+            yield put({ type: SET_LOADING_STATE});
             const { data } = yield call(getServer, GET_EXPENSE_DATA_URL);
             console.log(data);
             yield put({ type: GET_EXPENSE_DATA_STATE, data });
