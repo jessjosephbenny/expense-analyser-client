@@ -1,16 +1,18 @@
 import React from 'react';
 import { Table,IconButton, TextInput, Text, Combobox} from 'evergreen-ui';
-export default function MagicTable({ columns, data, pagination,rowRenderProps}) {
+export default function MagicTable({ columns, data, pagination,rowRenderProps,className}) {
 
     const [pageSize,setPageSize] = React.useState(10);
     const [currentPage,setCurrentPage] = React.useState(1);
     const lastPage = Math.floor(data.length/pageSize)+1;
+    if(currentPage>lastPage)
+        setCurrentPage(lastPage);
     const rangeStart = (currentPage-1)*pageSize;
     const rangeEnd = currentPage*pageSize<data.length?currentPage*pageSize:data.length;
     const dataView = data.slice(rangeStart,rangeEnd);
     return (
         <>
-            <Table>
+            <Table className={className}>
                 <Table.Head>
                     {columns.map(column => (
                         <Table.TextHeaderCell> {column['label']} </Table.TextHeaderCell>

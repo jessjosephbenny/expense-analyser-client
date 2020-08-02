@@ -3,7 +3,7 @@ import {
     WATCH_GET_EXPENSE_DATA, WATCH_UPLOAD_STATEMENT
 } from '../watcherActionTypes/expenseWatcherActionTypes'
 import {
-    GET_EXPENSE_DATA_STATE, SET_LOADING_STATE
+    GET_EXPENSE_DATA_STATE, SET_LOADING_STATE,GET_DAILY_DATA
 } from '../reducerActionTypes/expenseReducerActionTypes'
 import {
     GET_EXPENSE_DATA_URL, POST_UPLOAD_STATEMENT
@@ -16,8 +16,9 @@ export function* watchGetExpenseData() {
         yield takeLatest(WATCH_GET_EXPENSE_DATA, function* () {
             yield put({ type: SET_LOADING_STATE});
             const { data } = yield call(getServer, GET_EXPENSE_DATA_URL);
-            console.log(data);
             yield put({ type: GET_EXPENSE_DATA_STATE, data });
+            const {dailyUsage} = data;
+            yield put({type: GET_DAILY_DATA,dailyUsage});
         })
     }
     catch (error) {

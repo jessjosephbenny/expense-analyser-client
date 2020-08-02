@@ -1,10 +1,13 @@
 import React from 'react'
-import HeaderLabel from './headerLabel'
+import ExpenseBar from './expenseBar';
 
-class ClassificationDetails extends React.Component{
-    render(){
-        return(
-            <HeaderLabel text={this.props.Classification}></HeaderLabel>
+class ClassificationDetails extends React.Component {
+    render() {
+        const  {Classification} = this.props;
+        return (
+            <>
+            <ExpenseBar/>
+            </>
         )
     }
 }

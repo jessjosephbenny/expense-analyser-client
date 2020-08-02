@@ -1,22 +1,22 @@
 import React from 'react';
-import { ResponsivePieCanvas } from '@nivo/pie';
+import { ResponsivePieCanvas, ResponsivePie } from '@nivo/pie';
 import { connect } from 'react-redux';
 
-const generateClassificationData = (classification)=> {
-    return(
-            Object.keys(classification).map(key=>(
-                {
-                    "id":classification[key].name,
-                    "label":classification[key].name,
-                    "value":classification[key].totalExpense
-                }
-            )
-    )
+const generateClassificationData = (classification) => {
+    return (
+        Object.keys(classification).map(key => (
+            {
+                "id": classification[key].name,
+                "label": classification[key].name,
+                "value": classification[key].totalExpense
+            }
+        )
+        )
     )
 }
 
-const MyResponsivePieCanvas = ({ data,onClick}) => (
-    <ResponsivePieCanvas
+const MyResponsivePieCanvas = ({ data, onClick }) => (
+    <ResponsivePie
         data={data}
         margin={{ top: 40, right: 200, bottom: 40, left: 80 }}
         pixelRatio={1.25}
@@ -71,11 +71,12 @@ const MyResponsivePieCanvas = ({ data,onClick}) => (
                 symbolShape: 'circle'
             }
         ]}
-        onClick={onClick.bind(this,data)}
+        onClick={onClick.bind(this, data)}
     />
 )
 class ExpensePie extends React.Component {
     render() {
+        console.log("Inside ExpensePie")
         return (
             <MyResponsivePieCanvas data={this.props.classification} onClick={this.props.onClick} />
         )
@@ -87,4 +88,4 @@ const mapStateToProps = (state) => {
         classification: generateClassificationData(state.expenseState.classification)
     }
 }
-export default connect(mapStateToProps,null) (ExpensePie);
+export default connect(mapStateToProps, null)(ExpensePie);

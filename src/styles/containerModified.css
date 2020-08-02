@@ -23,3 +23,15 @@
         max-width: 1856px;
     }
 }
+label{
+    margin-bottom: initial;
+}
+.bp3-slider.bp3-vertical{
+    height: 250px;
+    width: 64px;
+}
+.display-5 {
+    font-size: 3.0rem;
+    font-weight: 300;
+    line-height: 1.2;
+}

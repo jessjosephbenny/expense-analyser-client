@@ -1,0 +1,36 @@
+.magic-list-item{
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0), 0 1px 1px rgba(16, 22, 26, 0.2);
+    padding: 8px;
+    height: 72px;
+    margin: 4px;
+}
+.magic-list{
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+.mostly-customized-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 16px;
+    background-color: #aaa; /* or add it to the track */
+  }
+  .mostly-customized-scrollbar::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+    display: none;
+}
+.mostly-customized-scrollbar::-webkit-scrollbar-corner {
+    background-color: transparent;
+}
+.mostly-customized-scrollbar::-webkit-scrollbar-thumb {
+    background-color: rgba(255,255,255,0.4);
+    -webkit-box-shadow: inset 1px 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.07);
+}
+.bg-card{
+    background-image: url('./images/pay-card.svg');
+    background-position: center;
+    background-clip: border-box;
+    background-size: cover;
+}

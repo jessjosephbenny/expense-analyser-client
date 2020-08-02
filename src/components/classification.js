@@ -22,7 +22,7 @@ class Classification extends React.Component{
         )
         else
         return(
-            <ClassificationDetails Classification={selectedClassification}/>
+            <ClassificationDetails Classification={selectedClassification} goback={()=>this.setState({detailScreen:false})}/>
         )
     }
 }
