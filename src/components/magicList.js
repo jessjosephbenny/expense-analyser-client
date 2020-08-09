@@ -53,7 +53,7 @@ class MagicList extends React.Component {
         let lastDate = new Date()
         console.log(showData);
         return (
-            <div className="magic-list mostly-customized-scrollbar" style={{ height: 720 }} onScroll={this.handleScroll}>
+            <div className="magic-list mostly-customized-scrollbar" style={{ height: 928 }} onScroll={this.handleScroll}>
                 {
                     showData.map(tdata => {
                         const date = new Date(parseInt(tdata.tDate.split('-')[0]),parseInt(tdata.tDate.split('-')[1])-1,parseInt(tdata.tDate.split('-')[2]));
@@ -81,7 +81,7 @@ function MagicListItem(props) {
                 <div style={{ marginTop: 4 }}>
                     <Avatar name={keyword} size={48} />
                 </div>
-                <div className="d-flex flex-column" style={{ marginLeft: 16, width: '80%' }}>
+                <div className="d-flex flex-column" style={{ marginLeft: 16, width: '65%' }}>
                     <div style={{ fontSize: 'larger', fontWeight: 600 }}>
                         <Text>{keyword}</Text>
                     </div>

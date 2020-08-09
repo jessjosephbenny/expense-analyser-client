@@ -12,41 +12,30 @@ import { SegmentedControl } from 'evergreen-ui';
 import MagicList from './magicList';
 
 class Dashboard extends React.Component {
-    componentDidMount(){
-        this.props.getExpenseData();
+    componentDidMount() {
+        // this.props.getExpenseData();
     }
     render() {
-        const{totalWithdrawal,totalDeposit,balance,average} = this.props.summary;
-        const{transactionData} = this.props;
+        const { totalWithdrawal, totalDeposit, balance, average } = this.props.summary;
+        const { transactionData } = this.props;
         return (
             <>
-            <div className="container">
-                <div className="row mt-3">
-                    <div className="col-md-3 mb-2">
-                        <MoneyCard header="Total Spent" value={totalWithdrawal} />
+                <div className="container">
+                    <div className="row mt-3">
+                        <ClassificationContainer />
                     </div>
-                    <div className="col-md-3 mb-2">
-                        <MoneyCard header="Total Income" value={totalDeposit} />
+                    <div className="row mt-3 h-100">
+
                     </div>
-                    <div className="col-md-3 mb-2">
-                        <MoneyCard header="Balance" value={balance} />
-                    </div>
-                    <div className="col-md-3 mb-2">
-                        <MoneyCard header="Avg Spent" value={average} />
-                    </div>
-                </div>
-                <div className="row mt-3 h-100">
-                    <ClassificationContainer/>
-                </div>
-                <div className="row mt-3">
-                    <div className="col-md-6">
-                        
-                    </div>
-                    <div className="col-md-6" style={{height:550}}>
-                        <ExpenseLine/>
+                    <div className="row mt-3">
+                        <div className="col-md-6">
+
+                        </div>
+                        <div className="col-md-6" style={{ height: 550 }}>
+                            <ExpenseLine />
+                        </div>
                     </div>
                 </div>
-            </div>
             </>
         )
     }
@@ -62,4 +51,4 @@ const mapDispatchToProps = (dispatch) => {
         getExpenseData: () => dispatch({ type: WATCH_GET_EXPENSE_DATA })
     }
 };
-export default connect(mapStateToProps,mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
