@@ -1,7 +1,6 @@
 import React from 'react'
 import { Avatar } from 'evergreen-ui'
 import { Text } from '@blueprintjs/core'
-import { show } from '@blueprintjs/core/lib/esm/components/context-menu/contextMenu';
 
 class MagicList extends React.Component {
     state = {
@@ -27,8 +26,7 @@ class MagicList extends React.Component {
                 }
             }
         }
-        console.log('JSON Compare....',JSON.stringify(nextProps.data.slice(0,prevState.showData.length)) == JSON.stringify(prevState.showData))
-        if(JSON.stringify(nextProps.data.slice(0,prevState.showData.length)) != JSON.stringify(prevState.showData))
+        if(JSON.stringify(nextProps.data.slice(0,prevState.showData.length)) !== JSON.stringify(prevState.showData))
         return{
             ...prevState,
             showData: nextProps.data.slice(0,30)
@@ -36,7 +34,6 @@ class MagicList extends React.Component {
     }
     fetchMoreData = () => {
         const { showData } = this.state;
-        console.log(this.props.data);
         this.setState({
             showData: [...showData, ...this.props.data.slice(showData.length, showData.length + 30)]
         })
@@ -51,9 +48,8 @@ class MagicList extends React.Component {
     render() {
         const { showData } = this.state;
         let lastDate = new Date()
-        console.log(showData);
         return (
-            <div className="magic-list mostly-customized-scrollbar" style={{ height: 928 }} onScroll={this.handleScroll}>
+            <div className="magic-list mostly-customized-scrollbar" style={{height:800}} onScroll={this.handleScroll}>
                 {
                     showData.map(tdata => {
                         const date = new Date(parseInt(tdata.tDate.split('-')[0]),parseInt(tdata.tDate.split('-')[1])-1,parseInt(tdata.tDate.split('-')[2]));

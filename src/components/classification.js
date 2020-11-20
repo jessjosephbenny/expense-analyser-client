@@ -12,7 +12,6 @@ class Classification extends React.Component{
             detailScreen:true,
             selectedClassification:data.label
         })
-        console.log(data)
     }
     render(){
         const {detailScreen,selectedClassification} = this.state;

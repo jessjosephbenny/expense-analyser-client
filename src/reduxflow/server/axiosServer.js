@@ -7,10 +7,23 @@ const axiosBase = axios.create({
     responseType: "json",
 })
 
+const handleRequest =(request) => {
+    if(localStorage.getItem('token'))
+        request.headers['Authorization'] = "Bearer "+localStorage.getItem('token')
+    return request    
+}
+
+axiosBase.interceptors.request.use((request)=>handleRequest(request))
+
 export const getServer = async(url) =>{
     return await axiosBase.get(url)
 };
 
+export const postServer = async(url,data) =>{
+    return await axiosBase.post(url,data);
+}
+
 export const postFileServer = async(url,data) =>{
+    console.log(url,data);
     return await axiosBase.post(url,data)
 }

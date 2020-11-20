@@ -14,7 +14,13 @@ import rootReducer from './reduxflow/rootReducer';
 const sagaMiddleWare = createSagaMiddleware();
 
 let middleWares = applyMiddleware(sagaMiddleWare,logger);
-const store = createStore(rootReducer,compose(middleWares));
+const intitialState = {
+  auth:{
+    authToken:localStorage.getItem('token')?localStorage.getItem('token'):"",
+    authenticated:localStorage.getItem('token')?true:false
+  }
+}
+const store = createStore(rootReducer,intitialState,compose(middleWares));
 sagaMiddleWare.run(rootSaga);
 
 ReactDOM.render(

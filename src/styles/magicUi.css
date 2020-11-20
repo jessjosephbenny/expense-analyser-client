@@ -29,8 +29,33 @@
     -webkit-box-shadow: inset 1px 1px 0 rgba(255,255,255,0.10), inset 0 -1px 0 rgba(255,255,255,0.07);
 }
 .bg-card{
-    background-image: url('./images/pay-card.svg');
+    /*background-image: url('./images/pay-card.svg');*/
+    background: linear-gradient(#4895ffff, #4895ffff);
     background-position: center;
     background-clip: border-box;
     background-size: cover;
+}
+
+.btn-float{
+    height: 56px;
+    width: 56px;
+    border-radius: 50%;
+    z-index: 9999;
+    opacity: 1;
+    outline: 0px;
+}
+
+.btn-float-right-bottom{
+    position: fixed;
+    bottom: 20px;
+    right: 32px;
+    opacity: 1;
+    z-index: 999;
+}
+
+.btn-float-button-container{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-end;
+    row-gap: 8px;
 }

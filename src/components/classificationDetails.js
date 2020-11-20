@@ -3,7 +3,6 @@ import ExpenseBar from './expenseBar';
 
 class ClassificationDetails extends React.Component {
     render() {
-        const  {Classification} = this.props;
         return (
             <>
             <ExpenseBar/>

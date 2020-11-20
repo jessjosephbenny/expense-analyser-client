@@ -1,64 +1,8 @@
 import React from 'react';
 import { ResponsiveLine } from '@nivo/line'
-import { ButtonGroup, Button, Label, Slider } from '@blueprintjs/core';
+import {Slider} from '@blueprintjs/core';
 import { SegmentedControl } from 'evergreen-ui';
 import { connect } from 'react-redux';
-const data = [
-    {
-        "id": "japan",
-        "color": "hsl(194, 70%, 50%)",
-        "data": [
-            {
-                "x": "plane",
-                "y": 136
-            },
-            {
-                "x": "helicopter",
-                "y": 179
-            },
-            {
-                "x": "boat",
-                "y": 157
-            },
-            {
-                "x": "train",
-                "y": 105
-            },
-            {
-                "x": "subway",
-                "y": 249
-            },
-            {
-                "x": "bus",
-                "y": 203
-            },
-            {
-                "x": "car",
-                "y": 262
-            },
-            {
-                "x": "moto",
-                "y": 270
-            },
-            {
-                "x": "bicycle",
-                "y": 29
-            },
-            {
-                "x": "horse",
-                "y": 101
-            },
-            {
-                "x": "skateboard",
-                "y": 39
-            },
-            {
-                "x": "others",
-                "y": 133
-            }
-        ]
-    }
-]
 
 const MyResponsiveLine = ({ data /* see data tab */ }) => (
     <ResponsiveLine
@@ -136,7 +80,6 @@ class ExpenseLine extends React.Component {
                 })
             }
             else if(segmentedControlOption === 'daily'){
-                //console.log('daily.....',dailyUsage['daily'])
                 chartData = dailyUsage['daily'].reverse().slice(0,sliderValue*10).map(data=>{    
                     return{
                         "x":data['date'].toDateString().split(' ').slice(1,3),
@@ -145,7 +88,6 @@ class ExpenseLine extends React.Component {
                 })
             }
         }
-        console.log('Chart Dara',chartData);
         return (
             <div className="d-flex flex-column mt-2 h-100">
                 <div className="d-flex justify-content-end">

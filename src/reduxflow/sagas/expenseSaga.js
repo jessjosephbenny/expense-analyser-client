@@ -29,12 +29,15 @@ export function* watchUploadStatement() {
     try {
         yield takeLatest(WATCH_UPLOAD_STATEMENT, function* (action) {
             yield put({ type: SET_LOADING_STATE});
-            const {file} = action;
+            console.log('from watchUploadStatement',action);
+            const {file,template} = action;
             let formData = new FormData();
             formData.append('file',file)
+            formData.append('format',template);
             const { data } = yield call(postFileServer, POST_UPLOAD_STATEMENT,formData);
-            console.log(data);
             yield put({ type: GET_EXPENSE_DATA_STATE, data });
+            const {dailyUsage} = data;
+            yield put({type: GET_DAILY_DATA,dailyUsage});
         })
     }
     catch (error) {

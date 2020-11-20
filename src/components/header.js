@@ -1,20 +1,40 @@
 import React from 'react';
-import { Navbar,Button,Alignment } from '@blueprintjs/core'
-class Header extends React.Component{
-    render(){
-        return(
-            <Navbar>
-            <Navbar.Group align={Alignment.LEFT}>
-              <Navbar.Heading> Expense Analyser</Navbar.Heading>
-              <Navbar.Divider />
-              <Button className="bp3-minimal" icon="home" text="Home" />
-            </Navbar.Group>
-            <Navbar.Group align={Alignment.RIGHT}>
-              <Button className="bp3-minimal" icon="log-out" text="Logout"/>
-            </Navbar.Group>
-          </Navbar>
-        )
-    }
+import {compose} from 'redux';
+import { Navbar, Button, Alignment } from '@blueprintjs/core'
+import { connect } from 'react-redux';
+import { SET_USER_LOGOUT } from '../reduxflow/reducerActionTypes/expenseReducerActionTypes';
+class Header extends React.Component {
+  logoutUser = ()=>{
+    const {logout} = this.props;
+    logout();
+    window.location.href = '/home';
+  }
+  render() {
+    const { authenticated } = this.props;
+    return (
+      <Navbar>
+        <Navbar.Group align={Alignment.LEFT}>
+          <Navbar.Heading> Expense Analyser</Navbar.Heading>
+        </Navbar.Group>
+        <Navbar.Group align={Alignment.RIGHT}>
+          {authenticated?<Button className="bp3-minimal" icon="log-out" text="Logout" onClick={this.logoutUser}/>
+          :<Button className="bp3-minimal" icon="log-in" text="Login"/>
+          }
+        </Navbar.Group>
+      </Navbar>
+    )
+  }
 }
-
-export default Header;
+const mapStatestoProps = (state) => {
+  return {
+    authenticated: state.auth.authenticated
+  }
+}
+const mapDispatchtoProps = (dispatch) => {
+  return{
+    logout : () => dispatch({type:SET_USER_LOGOUT})
+  }
+}
+export default compose(
+  connect(mapStatestoProps,mapDispatchtoProps)
+  )(Header);
